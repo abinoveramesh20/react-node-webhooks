@@ -52,7 +52,7 @@ jobs:
 
       - name: Copy frontend build artifacts to deployment directory
         run: |
-          sudo cp -r /var/www/html/angular-node-webhooks/frontend/build/* /var/www/html/react-node-app/frontend/build/
+          sudo scp -r /var/www/html/angular-node-webhooks/frontend/build/* /var/www/html/react-node-app/frontend/build/
 
       # Deploy backend files to server
       - name: Deploy backend to server

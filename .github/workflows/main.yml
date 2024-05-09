@@ -22,7 +22,7 @@ jobs:
       run: cd frontend && npm install
 
     - name: Build react
-      run: cd frontend && npm run build
+      run: cd frontend && npm run build && cd ../
 
     - name: Copy build folder to server
       uses: appleboy/scp-action@master
@@ -48,7 +48,7 @@ jobs:
         node-version: '18'
 
     - name: Install and Run node dependencies
-      run: cd ../ && npm install
+      run:  npm install
 
     - name: Deploy to server
       uses: appleboy/ssh-action@master

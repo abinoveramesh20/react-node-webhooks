@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths-ignore:
-      - 'frontend/**'
+      - 'react-node-app/frontend/**'
 
 jobs:
 

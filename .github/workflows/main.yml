@@ -49,16 +49,14 @@ jobs:
 
     - name: Install and Run node dependencies
       run:  npm install
-
   
-      
-    - name: Deploy to development server
+    - name: Deploy to server
       uses: appleboy/ssh-action@master
       with:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USERNAME }}
           port: ${{ secrets.PORT }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: | 
-           cd /var/www/html/react-node-app
-           git pull origin main 
+          script: |
+            cd /var/www/html/react-node-app
+            git pull origin main

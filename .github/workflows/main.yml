@@ -58,8 +58,8 @@ jobs:
             username: ${{ secrets.SERVER_USERNAME }}
             key: ${{ secrets.SSH_PRIVATE_KEY }}
             port: ${{ secrets.PORT }}
-            source: frontend/build/
-            target: /var/www/html/react-node-app/frontend/
+            source: ./frontend/build/
+            target: /var/www/html/react-node-app/frontend/build/
 
           
       # Deploy backend files to server

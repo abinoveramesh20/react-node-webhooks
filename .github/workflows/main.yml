@@ -50,10 +50,17 @@ jobs:
           name: react-build
           path: frontend/build
 
-      - name: Copy frontend build artifacts to deployment directory
-        run: |
-         sudo scp -i /home/abinoveramesh/Downloads/abi.pem  /home/abinoveramesh/var/www/html/abi.pem    ubuntu@13.127.218.44:/var/www/html/react-node-app/frontend/build
-
+      
+      # Copy frontend build artifacts to server
+      - name: Deploy frontend to server
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: frontend/build
+          target: /var/www/html/react-node-app/frontend/build/
+          
       # Deploy backend files to server
       - name: Deploy backend to server
         uses: appleboy/scp-action@master

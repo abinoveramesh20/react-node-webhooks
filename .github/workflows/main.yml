@@ -17,14 +17,14 @@ jobs:
       run: |
         cd frontend
         npm install
-        cd ../backend
+        cd ../
         npm install
 
     - name: Build and test
       run: |
         cd frontend
         npm run build
-        cd ../backend
+        cd ../
         npm test
 
   deploy:

@@ -34,4 +34,4 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: frontend/build/
           target: /var/www/html/react-node-app/
-          
+        

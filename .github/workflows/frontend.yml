@@ -30,6 +30,8 @@ jobs:
           host: ${{ secrets.SERVER_IP }}
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: build/*
-          target: /var/www/html/react-node-app
+          source: frontend/build/
+          target: /var/www/html/react-node-app/frontend/build/
+          strip_components: 1
+
           

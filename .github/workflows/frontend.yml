@@ -1,4 +1,4 @@
-name: Deploy to Server
+name: Frontend deployment
 
 on:
   push:

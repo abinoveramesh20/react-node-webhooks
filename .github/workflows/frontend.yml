@@ -35,6 +35,6 @@ jobs:
           source: frontend/build/
           target: /var/www/html/react-node-app/
           script: |
-            cd /var/www/html/react-node-app
+            cd /var/www/html/react-node-app/frontend/
             git pull origin main
         

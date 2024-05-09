@@ -25,7 +25,6 @@ jobs:
       run:  npm install
   
     - name: Deploy to server
-      if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && contains(github.event.head_commit.modified, 'react-node-app/') }}
       uses: appleboy/ssh-action@master
       with:
           host: ${{ secrets.SERVER_IP }}

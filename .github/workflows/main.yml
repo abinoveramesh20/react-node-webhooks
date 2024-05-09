@@ -31,7 +31,11 @@ jobs:
         with:
           name: react-build
           path: frontend/build
-
+          
+      # Build Node.js backend
+      - name: Install backend dependencies
+        run: npm install
+        working-directory: react-node-app
     
   deploy:
     runs-on: ubuntu-latest
@@ -47,10 +51,7 @@ jobs:
           name: react-build
           path: frontend/build
 
-      # Build Node.js backend
-      - name: Install backend dependencies
-        run: npm install
-        working-directory: react-node-app
+      
 
 
       # Copy frontend build artifacts to server

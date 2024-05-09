@@ -48,7 +48,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: angular-build
-          path: /build
+          path: ./build
 
       - name: Copy built files to deployment directory
         run: |

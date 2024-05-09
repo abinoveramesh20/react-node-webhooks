@@ -7,7 +7,7 @@ on:
     paths:
       - 'react-node-app/**'
     paths-ignore:
-      - 'react-node-app/frontend/**'
+      - 'frontend/**'
 
 jobs:
 

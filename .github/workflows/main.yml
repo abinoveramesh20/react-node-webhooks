@@ -30,7 +30,7 @@ jobs:
           npm install
 
       - name: Build Angular project
-        run: ng build 
+        run: npm run build
 
       # Save build artifacts as a zip file
       # and the file will be stored in the /tmp as angular-build

@@ -35,7 +35,7 @@ jobs:
       # Build Node.js backend
       - name: Install backend dependencies
         run: npm install
-        working-directory: backend
+        working-directory: /var/www/html/react-node-app
 
   deploy:
     runs-on: ubuntu-latest

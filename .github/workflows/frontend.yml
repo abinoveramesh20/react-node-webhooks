@@ -4,10 +4,9 @@ on:
   push:
     branches:
       - main 
-
+  
 jobs:
   deploy:
-    if: ${{ github.event_name == 'push' && contains(github.event.head_commit.modified, 'frontend/') }}
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -31,4 +30,4 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: frontend/build/
-          target: /var/www/html/react-node-app/frontend/
+          target: /var/www/html/react-node-app/frontend/build/

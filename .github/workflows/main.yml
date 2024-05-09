@@ -1,0 +1,55 @@
+name: Angular Build and Deploy
+
+on:
+  push:
+    branches:
+      - main
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x" 
+          
+      - name: Cache npm dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: ${{ runner.os }}-node-
+
+      - name: Install Angular CLI and dependencies
+        run: |
+          npm install -g @angular/cli@12.2.0  # Replace 12.2.0 with the actual version you want to install
+          npm install
+
+      - name: Build Angular project
+        run: ng build 
+
+      # Save build artifacts as a zip file
+      # and the file will be stored in the /tmp as angular-build
+      - name: Archive build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: angular-build
+          path: ./build
+
+  deploy:
+    runs-on: self-hosted
+    needs: build
+    steps:
+      - name: Download build artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: angular-build
+          path: /tmp/angular-build
+
+      - name: Copy built files to deployment directory
+        run: |
+          sudo cp -r /tmp/angular-build/* /var/www/html/react-node-app/

@@ -53,15 +53,9 @@ jobs:
       
 
 
-      # Copy frontend build artifacts to server
-      - name: Deploy frontend to server
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.SERVER_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: frontend/build
-          target: /var/www/html/react-node-app/frontend/
+     - name: Copy built files to deployment directory
+        run: |
+          sudo cp -r /var/www/html/react-node-app/frontend/build/* /var/www/html/react-node-app/frontend/build/
 
       # Copy backend files to server
       - name: Deploy backend to server

@@ -50,14 +50,11 @@ jobs:
           name: react-build
           path: frontend/build
 
-      
-
-
-     - name: Copy built files to deployment directory
+      - name: Copy frontend build artifacts to deployment directory
         run: |
-          sudo cp -r /var/www/html/react-node-app/frontend/build/* /var/www/html/react-node-app/frontend/build/
+          sudo cp -r ${{ github.workspace }}/frontend/build/* /var/www/html/react-node-app/frontend/build/
 
-      # Copy backend files to server
+      # Deploy backend files to server
       - name: Deploy backend to server
         uses: appleboy/scp-action@master
         with:

@@ -26,6 +26,7 @@ jobs:
 
     - name: Copy built files to deployment directory
       run: |
+       cd /var/www/html/angular-node-webhooks/frontend
        sudo cp -r build/* /var/www/html/frontend/build/
 
   node:

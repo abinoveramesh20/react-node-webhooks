@@ -4,9 +4,10 @@ on:
   push:
     branches:
       - main 
-  
+
 jobs:
   deploy:
+    if: ${{ github.event_name == 'push' && contains(github.event.head_commit.modified, 'frontend/') }}
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -23,7 +24,6 @@ jobs:
         run: npm run build
         working-directory: frontend
 
-        
       - name: Copy build folder to server
         uses: appleboy/scp-action@master
         with:
@@ -31,6 +31,4 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           source: frontend/build/
-          target: /var/www/html/react-node-app/frontend/build/
-
-          
+          target: /var/www/html/react-node-app/frontend/
